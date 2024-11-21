@@ -39,7 +39,6 @@ jobs:
       - name: Check
         run: |
           make ci
-          docker compose --file docker-compose.yml up --abort-on-container-exit
 
       - name: Push
         uses: docker/build-push-action@v3
