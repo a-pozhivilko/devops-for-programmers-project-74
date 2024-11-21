@@ -38,6 +38,7 @@ jobs:
 
       - name: Check
         run: |
+          make ansible-generate-env
           make ci
 
       - name: Push
