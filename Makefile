@@ -8,7 +8,9 @@ build:
 
 start:
 	npm start
+
 dev:
 	npm run dev
+
 test:
-	npm test
+        NODE_ENV=test npm test -s	

@@ -2,9 +2,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
-    image: pozh87/hexlet-1 
+      dockerfile: Dockerfile.production
+    image: pozh87/devops-for-programmers-project-74
     container_name: nodeosapp
-    volumes:
-      - ./app:/app 
     command: make test 
