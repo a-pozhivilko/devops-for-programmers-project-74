@@ -1,0 +1,10 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pozh87/hexlet-1 
+    container_name: nodeosapp
+    volumes:
+      - ./app:/app 
+    command: make test 
