@@ -17,3 +17,8 @@ test:
 
 ci: 
 	docker-compose -f docker-compose.yml up --abort-on-container-exit
+ansible-generate-env:
+	docker run --rm -e RUNNER_PLAYBOOK=ansible/development.yml \
+		-v $(CURDIR)/ansible/development:/runner/inventory \
+		-v $(CURDIR):/runner/project \
+		quay.io/ansible/ansible-runner
