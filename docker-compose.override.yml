@@ -1,8 +1,24 @@
 services:
   app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "0.0.0.0:8080:8080"
-    dockerfile: Dockerfile
+#    dockerfile: Dockerfile
     volumes:
       - ./app:/app
     command: make dev 
+
+  caddy:
+    image: caddy:2.6
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./services/caddy/Caddyfile:/etc/caddy/Caddyfile
+    depends_on:
+      - app
