@@ -6,3 +6,18 @@ services:
     image: pozh87/devops-for-programmers-project-74
     container_name: nodeosapp
     command: make test 
+    depends_on:
+      - db
+  db:
+    image: postgres:latest
+    restart: always
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
